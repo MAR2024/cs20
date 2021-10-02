@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href = "songStyles.css" ?>
+<songs>
+	<song>
+		<title>Overdrive</title>
+		<artist>Conan Gray</artist>
+		<genre>pop</genre>
+	</song>
+	<song>
+		<title>Saturday</title>
+		<artist>21 Pilots</artist>
+		<genre>pop</genre>
+	</song>
+	<song>
+		<title>22</title>
+		<artist>Taylor Swift</artist>
+		<genre>pop</genre>
+	</song>
+	<song>
+		<title>World's Smallest Violin</title>
+		<artist>AJR</artist>
+		<genre>indie</genre>
+	</song>
+	<song>
+		<title>Way It Goes</title>
+		<artist>Hippo Campus</artist>
+		<genre>indie</genre>
+	</song>
+	<song>
+		<title>Bang</title>
+		<artist>AJR</artist>
+		<genre>indie</genre>
+	</song>
+	<song>
+		<title>OK</title>
+		<artist>Wallows</artist>
+		<genre>indie</genre>
+	</song>
+	<song>
+		<title>Mamma Mia</title>
+		<artist>ABBA</artist>
+		<genre>disco</genre>
+	</song>
+	<song>
+		<title>September</title>
+		<artist>Earth, Wind, and Fire</artist>
+		<genre>disco</genre>
+	</song>
+	<song>
+		<title>Dancing Queen</title>
+		<artist>ABBA</artist>
+		<genre>disco</genre>
+	</song>
+</songs>
