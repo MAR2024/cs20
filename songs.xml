@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href = "songStyles.css" ?>
+<songs>
+	<song>
+		<title>Overdrive</title>
+		<artist>Conan Gray</artist>
+		<genre>pop</genre>
+		<year>2021</year>
+	</song>
+	<song>
+		<title>Saturday</title>
+		<artist>21 Pilots</artist>
+		<genre>pop</genre>
+		<year>2021</year>
+	</song>
+	<song>
+		<title>22</title>
+		<artist>Taylor Swift</artist>
+		<genre>pop</genre>
+		<year>2012</year>
+	</song>
+	<song>
+		<title>World's Smallest Violin</title>
+		<artist>AJR</artist>
+		<genre>indie</genre>
+		<year>2021</year>
+	</song>
+	<song>
+		<title>Way It Goes</title>
+		<artist>Hippo Campus</artist>
+		<genre>indie</genre>
+		<year>2017</year>
+	</song>
+	<song>
+		<title>Bang</title>
+		<artist>AJR</artist>
+		<genre>indie</genre>
+		<year>2019</year>
+	</song>
+	<song>
+		<title>OK</title>
+		<artist>Wallows</artist>
+		<genre>indie</genre>
+		<year>2020</year>
+	</song>
+	<song>
+		<title>Mamma Mia</title>
+		<artist>ABBA</artist>
+		<genre>disco</genre>
+		<year>1975</year>
+	</song>
+	<song>
+		<title>September</title>
+		<artist>Earth, Wind, and Fire</artist>
+		<genre>disco</genre>
+		<year>1978</year>
+	</song>
+	<song>
+		<title>Dancing Queen</title>
+		<artist>ABBA</artist>
+		<genre>disco</genre>
+		<year>1976</year>
+	</song>
+</songs>
