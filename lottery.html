@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lottery</title>
+<script language = "javascript">
+	
+	// randomly choose my lottery numbers
+	document.write("<STRONG> My Pick: </STRONG>");
+	my_pick = [1, 2, 3, 4, 5, 6];
+	for (i = 0; i < 6; i++) {
+		if (i == 5) {
+			my_pick.sort(function(a,b) {return a-b});
+			my_pick[i] = Math.random()*(18)+1;
+			
+		} else {
+			my_pick[i] = Math.random()*(48) + 1;
+		}
+	} 
+	
+	for (m = 0; m < 6; m++) {
+		document.write(parseInt(my_pick[m])+ " ");
+	}
+	
+
+	// user enters winning numbers
+	winning_string = prompt("Enter Winning Numbers", "Ex: 1 8 4 3 2");
+	WINNING_NUMS = winning_string.split(" ");
+	WINNING_NUMS.sort(function(a,b) {return a-b});
+	WINNING_NUMS[5] = prompt("Enter Lucky Ball Number", "Ex: 10");
+	
+	
+	// compare my_pick with winning numbers
+	document.write("<STRONG> <br> Winning Numbers: </STRONG>");
+	numWins = 0;
+	lucky_ball = false;
+	for (j = 0; j < 6; j++) {
+		document.write(parseInt(WINNING_NUMS[j])+ " ");
+		if (my_pick[j] == WINNING_NUMS[j]) {
+			numWins++;
+			if (j == 5) {
+				lucky_ball = true;
+				numWins--;
+			}
+		}	
+	}
+	
+	document.write("<STRONG> <br> Number of Matches: </STRONG>" + numWins);
+	document.write("<STRONG> <br> Lucky Ball: </STRONG>");
+	if (lucky_ball) {
+		document.write("matched");
+	} else {
+		document.write("did not match");
+	}
+	
+	payout = 0;
+	document.write("<STRONG> <br> Payout: </STRONG>");
+	if (numWins == 5) {
+		if (lucky_ball) {
+			document.write("$7,000 a WEEK for LIFE");
+		} else {
+			document.write("$25,000 a YEAR for LIFE");
+		}
+	} else if (numWins == 4) {
+		if (lucky_ball) {
+			document.write("$5,000");
+		} else {
+			document.write("$200");
+		}
+	} else if (numWins == 3) {
+		if (lucky_ball) {
+			document.write("$150");
+		} else {
+			document.write("$20");
+		}
+	} else if (numWins == 2) {
+		if (lucky_ball) {
+			document.write("$25");
+		} else {
+			document.write("$3");
+		}
+	} else if (numWins == 1) {
+		if (lucky_ball) {
+			document.write("$6");
+		} else { 
+			document.write("$0");
+		}
+	} else if (numWins == 0) {
+		if (lucky_ball) {
+			document.write("$4");
+		} else {
+		document.write("$0");
+		}
+	}
+	
+	
+</script>	
+	
+</head>
+
+<body>
+</body>
+</html>
