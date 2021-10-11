@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joe's Hot Dogs</title>
+
+
+<script language = "javascript">
+	HOTDOG_PRICE = 3.75;
+	DRINK_PRICE = 1.50;
+	FRIES_PRICE = 2.00;
+	DISCOUNT = .1
+	TAX = .0625
+	order = [];
+	order[0] = prompt("How many hotdogs would you like?", "Number of Hotdogs");
+	order[1] = prompt("How many fries would you like?", "Number of Fries");
+	order[2] = prompt("How many drinks would you like?", "Number of Drinks");
+	subtotal = HOTDOG_PRICE*parseInt(order[0]) + FRIES_PRICE*parseInt(order[1]) + DRINK_PRICE*parseInt(order[2]);
+
+	document.write("<h1> Joe's Hotdogs Receipt</h1>");
+	document.write("<STRONG>Items Ordered: </STRONG>");
+	document.write(parseInt(order[0]) + parseInt(order[1])+ parseInt(order[2]));
+	document.write("<br></br>");
+	document.write(parseInt(order[0]) + " hotdogs, ");
+	document.write(parseInt(order[1]) + " fries, ");
+	document.write(parseInt(order[2]) + " drinks <br></br>");
+	document.write("<STRONG> Subtotal: </STRONG> $" + subtotal + "<br></br>");
+	
+	if (subtotal >= 20) {
+		document.write("<STRONG> Discount: </STRONG> $");
+		document.write(parseFloat(subtotal*DISCOUNT).toFixed(2) + "<br></br>");
+		subtotal = subtotal- subtotal*DISCOUNT;
+	}
+	
+	taxed_amount = Math.round((100*subtotal*TAX))/100;			   
+	document.write("<STRONG>Tax: </STRONG>$" + taxed_amount + "<br></br>");
+		
+	finalTotal = parseFloat(subtotal + taxed_amount).toFixed(2);
+	document.write("<STRONG> Final: </STRONG> $" + finalTotal);
+	
+	
+</script>
+	
+</head>
+<body>
+</body>
+</html>
