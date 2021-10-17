@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lottery</title>
+<script language = "javascript">
+	
+	// randomly choose my lottery numbers
+	rand_pick = [];
+	for (i = 0; i < 5; i++) {
+		rand_pick[i] = Math.random()*(48) + 1;
+	} 
+	rand_lucky = Math.random()*(18) + 1;
+	
+	document.write("<STRONG> Random Pick: </STRONG>");
+	printNumbers(rand_pick, rand_lucky);
+	rand_pick.sort(function(a, b){return a - b}); // piece of code from WW3 schools
+	document.write("<STRONG> <br> Pick Sorted: </STRONG>");
+	printNumbers(rand_pick, rand_lucky);
+
+	// user enters winning numbers
+	winning_string = prompt("Enter Winning Numbers", "Ex: 1 8 4 3 2");
+	winning_nums = winning_string.split(" ");
+	winning_nums.sort(function(a, b){return a - b}); // piece of code from WW3 schools
+	winning_lucky = prompt("Enter Lucky Ball Number", "Ex: 10");
+	document.write("<STRONG> <br> Winning Numbers Sorted: </STRONG>");
+	printNumbers(winning_nums, winning_lucky);
+	
+	
+	// compare rand_pick with winning numbers
+	numWins = 0;
+	lucky_ball = false;
+	for (j = 0; j < 5; j++) {
+		if (rand_pick[j] == winning_nums[j]) {
+			numWins++;
+		}
+	}
+	document.write("<STRONG> <br> Number Matching: </STRONG>" + numWins);
+	document.write("<STRONG> <br> Lucky ball </STRONG>");
+	
+	if (rand_lucky == winning_lucky) {
+		lucky_ball = true;
+		document.write("matched");
+	} else {
+		document.write("does not match");
+	}
+	
+	// print out payout
+	document.write("<STRONG> <br> Your winnings: </STRONG>");
+	if (numWins == 5) {
+		if (lucky_ball) {
+			document.write("$7,000 a WEEK for LIFE");
+		} else {
+			document.write("$25,000 a YEAR for LIFE");
+		}
+	} else if (numWins == 4) {
+		if (lucky_ball) {
+			document.write("$5,000");
+		} else {
+			document.write("$200");
+		}
+	} else if (numWins == 3) {
+		if (lucky_ball) {
+			document.write("$150");
+		} else {
+			document.write("$20");
+		}
+	} else if (numWins == 2) {
+		if (lucky_ball) {
+			document.write("$25");
+		} else {
+			document.write("$3");
+		}
+	} else if (numWins == 1) {
+		if (lucky_ball) {
+			document.write("$6");
+		} else { 
+			document.write("$0");
+		}
+	} else if (numWins == 0) {
+		if (lucky_ball) {
+			document.write("$4");
+		} else {
+		document.write("$0");
+		}
+	}
+	
+	function printNumbers(arr, lucky){
+		for (i = 0; i < arr.length; i++) {
+			document.write(parseInt(arr[i]) + " ");
+		}
+		document.write("lucky " + parseInt(lucky));
+	}
+	
+</script>	
+	
+</head>
+
+<body>
+</body>
+</html>
