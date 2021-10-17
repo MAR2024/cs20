@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Amicable Numbers</title>
+	<script language = "javascript">
+		
+		function runProgram() {
+			num1 = document.getElementById("num1").value;
+			num2 = document.getElementById("num2").value;
+			sum1 = sumFactors(collectFactors(num1));
+			sum2 = sumFactors(collectFactors(num2));
+			if (checkAmicable(sum1,sum2,num1,num2)) {
+				toPrint = "The numbers: " + num1 + " and " + num2 + " are amicable";
+			} else {
+				toPrint = "The numbers: " + num1 + " and " + num2 + " are not amicable";
+			}
+			document.getElementById("display").innerHTML = toPrint;
+			s = "Factors of " + num1 + ": " + getStringFactors(num1) + "\n";
+			s += "Factors of " + num2 + ": " + getStringFactors(num2);
+			alert(s);
+		}
+		
+		function checkAmicable(s1,s2, n1,n2) {
+			if(s1 == n2) {
+				if(s2 == n1) {
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		function sumFactors(a) {
+			sum = 0;
+			for (j = 0; j < a.length; j++) {
+				sum += a[j];
+			}
+			return sum;
+		}
+		
+		function getStringFactors(x) {
+			a = collectFactors(x);
+			a.sort(function(a,b) {return a-b});
+			s = "";
+			for (i = 0; i < a.length; i++) {
+				s += a[i];
+				s += " ";
+			}
+			return s;
+		}
+		
+		function collectFactors(x) {
+			factors = [];
+			if (x != 1) {
+				factors[0] = 1;
+				indx = 1;
+			} else {
+				indx = 1;
+			}
+			for (i = 2; i < x/2; i++) {
+				if (isAFactor(x,i)) {
+					if (notInList(factors, i)) {
+						factors[indx] = i;
+						factors[indx+1] = x/i;
+						indx += 2;
+					} else {
+						break;
+					}
+				}
+			}
+			return factors;
+		}
+		
+		function notInList(arr, i) {
+			for (k = 0; k < arr.length; k++) {
+				if (arr[k] == i) {
+					return false;
+				}
+			}
+			return true;
+		}
+		
+		function isAFactor(x,y) {
+			if (x%y == 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<strong>Amicable Number Checker</strong>
+	<form method = "get">
+		First Number:
+		<br> 
+		<input type = "text" id = "num1">
+		<br>  Second Number: <br>
+		<input type = "text" id = "num2"> 
+		<br>
+		<input type = "button" onclick = "runProgram()" value = "Submit">
+	</form>
+	<div id = "display"></div>
+</body>
+</html>
