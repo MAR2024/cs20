@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jade Delight</title>
+	
+<style>
+	.address {
+		display: none;
+	}
+</style>
+	
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"> </script>
+</head>
+
+<body>
+<script language="javascript">
+
+function MenuItem(name, cost)
+{
+	this.name = name;
+	this.cost=cost;
+}
+
+menuItems = new Array(
+	new MenuItem("Chicken Chop Suey", 4.5),
+	new MenuItem("Sweet and Sour Pork", 6.25),
+	new MenuItem("Shrimp Lo Mein", 5.25),
+	new MenuItem("Moo Shi Chicken", 6.5),
+	new MenuItem("Fried Rice", 2.35)
+);
+
+function makeSelect(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' size='1'>";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option>" + j + "</option>";
+	t+= "</select>"; 
+	return t;
+}
+	
+function validate() {
+	noError = true;
+	d = new Date();
+	hour = d.getHours() - 12;
+	min = d.getMinutes();
+	validPhoNo = /^[[0-9]{10}$/;
+	with (document.data) {
+		if (lname.value == "") {
+			alert("You must enter a last name.");
+			lname.focus();
+			return false;
+		}
+		if (phone.value == "") {
+			alert("You must enter a phone number.");
+			phone.focus();
+			return false;
+		} 
+		if (!phone.value.match(validPhoNo)) {
+			alert("You must enter a valid phone number in the form: 4843185454");
+			phone.focus();
+			return false;
+		}
+		if (p_or_d.value == "Pickup") {
+			time = findTime(hour,min, 15);
+		} else {
+			if(street.value == "") {
+				alert("You must enter a street address.");	
+				street.focus();
+				return false;
+			}
+			if (city.value == "") {
+				alert("You must enter a city.");
+				city.focus();
+				return false;
+			}
+			time = findTime(hour, min, 30);
+		}
+
+		if (quan0.value + quan1.value + quan2.value + quan3.value + quan4.value == 0){
+			alert("You must order at least 1 item");
+			quan0.focus();
+			return false;
+		}
+		
+		s = "Thank you for your order!\n"
+		s += "\nOrder Time: " + printTime(hour,min)
+		s += "\n" + p_or_d.value + " Time: " + printTime(time[0], time[1]);
+		quantities = [quan0.value, quan1.value, quan2.value, quan3.value, quan4.value];
+		for (i = 0; i < 5; i ++) {
+			if(quantities[i] > 0) {
+				s += "\n      " + quantities[i] + "   " + menuItems[i].name + "   $";
+				s += menuItems[i].cost*quantities[i];
+			}
+		}
+		s += "\nSubtotal: " + subtotal.value;
+		s += "\nTax: " + tax.value;
+		s += "\nTotal: " + total.value;
+		alert(s);
+		
+		return true;
+	}
+}
+	
+function getQuan(i) {
+	return "quan" + i;
+}
+	
+$(document).ready (function() {
+	$('select[name="quan0"]').change(function() {
+		itemPrice = menuItems[0].cost*$('[name = "quan0"]').val();
+		update(itemPrice, 0);
+		
+	});
+	$('select[name="quan1"]').change(function() {
+		itemPrice = menuItems[1].cost*$('[name = "quan1"]').val();
+		update(itemPrice, 1);
+
+	});
+	$('select[name="quan2"]').change(function() {
+		itemPrice = menuItems[2].cost*$('[name = "quan2"]').val();
+		update(itemPrice, 2);
+
+	});
+	$('select[name="quan3"]').change(function() {
+		itemPrice = menuItems[3].cost*$('[name = "quan3"]').val();
+		update(itemPrice, 3);
+
+	});
+	$('select[name="quan4"]').change(function() {
+		itemPrice = menuItems[4].cost*$('[name = "quan4"]').val();
+		update(itemPrice, 4);
+
+	});	
+
+})
+
+function update(itemPrice, j) {
+	$(document.data.cost[j]).val(itemPrice.toFixed(2));
+	subtotal = 0;
+	for (m = 0; m < 5; m++) {
+		subtotal += 1*$(document.data.cost[m]).val();
+	} 
+	getSubtotalTaxTotal(subtotal);
+}
+	
+
+function getSubtotalTaxTotal(subtotal){
+	$('[name = "subtotal"]').val(subtotal.toFixed(2));
+	$('[name = "tax"]').val((subtotal*.0625).toFixed(2));
+	$('[name = "total"]').val((subtotal + subtotal*.0625).toFixed(2));
+}
+	
+function printTime(h, m) {
+	s = h + ":";
+	if (m < 10) {
+		s += "0" + m;
+	} else {
+		s += m;
+	}
+	return s;
+}
+	
+function findTime(h, m, add) {
+	m += add;
+	if(m >= 60) {
+		if (h == 12) {
+			h = 1;
+		} else {
+			h++;
+		}
+		m -= 60;
+	}
+	a = [h,m];
+	return a;
+}
+	
+function showAdd() {
+	with (document.data) {
+		if (p_or_d.value == "Delivery") {
+			document.getElementById("st").style.display = "block";
+			document.getElementById("cy").style.display = "block";
+		} else { 
+			document.getElementById("st").style.display = "none";
+			document.getElementById("cy").style.display = "none";
+		}
+	}
+}
+</script>
+
+<h1>Jade Delight</h1>
+<form name = "data" onSubmit = "return validate()" method = "get" >
+
+<p>First Name: <input type="text"  name='fname' /></p>
+<p>Last Name*:  <input type="text"  name='lname' /></p>
+<p class = "address" id = "st">Street*: <input type="text"  name='street'/></p>
+<p class = "address" id = "cy">City*: <input type="text"  name='city'/></p>
+<p>Phone*: <input type="text"  name='phone' value = "Ex: 4843185454"/></p>
+<p> 
+	<input type="radio"  name="p_or_d" value = "Pickup" checked="checked" onClick = "showAdd()"/>Pickup  
+	<input type="radio"  name='p_or_d' value = 'Delivery' onClick = "showAdd()"/>
+	Delivery
+</p>
+<table border="0" cellpadding="3">
+  <tr>
+    <th>Select Item</th>
+    <th>Item Name</th>
+    <th>Cost Each</th>
+    <th>Total Cost</th>
+  </tr>
+<script language="javascript">
+
+  var s = "";
+  for (i=0; i< menuItems.length; i++)
+  {
+	  s += "<tr><td>";
+	  s += makeSelect("quan" + i, 0, 10);
+	  s += "</td><td>" + menuItems[i].name + "</td>";
+	  s += "<td> $ " + menuItems[i].cost.toFixed(2) + "</td>";
+	  s += "<td>$<input type='text' name='cost'/></td></tr>";
+  }
+  document.writeln(s);
+</script>
+</table>
+<p>Subtotal: 
+   $<input type="text"  name='subtotal' id="subtotal" />
+</p>
+<p>Mass tax 6.25%:
+  $ <input type="text"  name='tax' id="tax" />
+</p>
+<p>Total: $ <input type="text"  name='total' id="total" />
+</p>
+
+<input type = "submit" value = "Submit Order" />
+
+</form>
+</body>
+</html>
