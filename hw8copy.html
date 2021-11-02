@@ -36,10 +36,10 @@ $(document).ready (function() {
 	function listSongs(songs) {
 		toReturn = "";
 		for (i = 0; i < 10; i++) {
-			toReturn += songs[i]["Title"] + "<br>";
-			toReturn += "Artist: " + songs[i]["Artist"] + "<br>";
-			toReturn += "Genre: " + songs[i]["Genre"] + "<br>";
-			toReturn += "Released " + songs[i]["Year"] + "<br><br>";
+			toReturn += songs[i]["title"] + "<br>";
+			toReturn += "Artist: " + songs[i]["artist"] + "<br>";
+			toReturn += "Genre: " + songs[i]["genre"] + "<br>";
+			toReturn += "Released " + songs[i]["year"] + "<br><br>";
 		}
 		return toReturn;
 	}
@@ -61,10 +61,10 @@ $(document).ready (function() {
 		for (i = 0; i < 10; i++) {
 			for (j = 0; j < songs[i]["Genre"].length; j++) {
 				if (songs[i]["Genre"][j] == genre) {
-					toReturn += songs[i]["Title"] + "<br>";
-					toReturn +="Artist: " + songs[i]["Artist"] + "<br>";
-					toReturn += "Genre: " + songs[i]["Genre"] + "<br>";
-					toReturn += "Released " + songs[i]["Year"] + "<br><br>"; 
+					toReturn += songs[i]["title"] + "<br>";
+					toReturn +="Artist: " + songs[i]["artist"] + "<br>";
+					toReturn += "Genre: " + songs[i]["genre"] + "<br>";
+					toReturn += "Released " + songs[i]["year"] + "<br><br>"; 
 				}
 			}
 		}
