@@ -15,18 +15,19 @@
 $(document).ready (function() {
 	var songs = [];
 	$.getJSON("https://raw.githubusercontent.com/MAR2024/cs20/main/songs.json", function(data) {
-  		$.each( data, function( key, val ) {
-    	songs.push( "<li id='" + key + "'>" + val + "</li>" );
-  		});
-		songStr = JSON.stringify(songs);
+  		var test = JSON.stringify(data);
+		//$.each( data, function( key, val ) {
+    	//songs.push( "<li id='" + key + "'>" + val + "</li>" );
+  		//});
+		//songStr = JSON.stringify(songs);
 		
-	document.getElementById("part2").innerHTML += "<br>" + songStr + "<br><br>";
+	/*document.getElementById("part2").innerHTML += "<br>" + songStr + "<br><br>";
 	document.getElementById("part3").innerHTML += "<br>" + listSongs(songs);
 	
 	$('select').change(function() {
-		displayGenre($("#genres").val(), songs);
+		displayGenre($("#genres").val(), songs); */
 		
-	});
+	}); */
 	});
 	
 });
