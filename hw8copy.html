@@ -24,7 +24,11 @@ $(document).ready (function() {
 	$.get('https://raw.githubusercontent.com/MAR2024/cs20/main/songs.json', function(data) {
   		var songStr = JSON.stringify(data);
 		document.getElementById("part2").innerHTML += "<br>" + songStr + "<br><br>";
-		//document.getElementById("part3").innerHTML += "<br>" + listSongs(songs);
+		document.getElementById("part3").innerHTML += "<br>" + listSongs(data);
+		$('select').change(function() {
+		displayGenre($("#genres").val(), data);
+		
+	});
 	});
 	alert("dfd");
 });
