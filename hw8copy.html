@@ -16,7 +16,7 @@ $(document).ready (function() {
 	var songs = [];
 	$.getJSON("https://raw.githubusercontent.com/MAR2024/cs20/main/songs.json", function(data) {
   		var test = JSON.stringify(data);
-		alert(test);
+		document.write(test);
 		//$.each( data, function( key, val ) {
     	//songs.push( "<li id='" + key + "'>" + val + "</li>" );
   		//});
