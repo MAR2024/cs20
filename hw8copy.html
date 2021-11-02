@@ -59,8 +59,8 @@ $(document).ready (function() {
 	function getGenreString(genre, songs) {
 		toReturn = "<br>";
 		for (i = 0; i < 10; i++) {
-			for (j = 0; j < songs[i]["Genre"].length; j++) {
-				if (songs[i]["Genre"][j] == genre) {
+			for (j = 0; j < songs[i]["genre"].length; j++) {
+				if (songs[i]["genre"][j] == genre) {
 					toReturn += songs[i]["title"] + "<br>";
 					toReturn +="Artist: " + songs[i]["artist"] + "<br>";
 					toReturn += "Genre: " + songs[i]["genre"] + "<br>";
