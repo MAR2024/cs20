@@ -22,9 +22,9 @@ $(document).ready (function() {
 	var songs = [];
 	alert("hello");
 	$.get('https://raw.githubusercontent.com/MAR2024/cs20/main/songs.json', function(data) {
-  		var test = JSON.stringify(data);
-		alert("json");
-		alert(test);
+  		var songStr = JSON.stringify(data);
+		document.getElementById("part2").innerHTML += "<br>" + songStr + "<br><br>";
+		//document.getElementById("part3").innerHTML += "<br>" + listSongs(songs);
 	});
 	alert("dfd");
 });
