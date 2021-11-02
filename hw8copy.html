@@ -20,14 +20,17 @@
 
 $(document).ready (function() {
 	var songs = [];
-	alert("hello");
 	$.getJSON('https://raw.githubusercontent.com/MAR2024/cs20/main/songs.json', function(data) {
   		var songStr = JSON.stringify(data);
-		alert(songStr);
-		alert("json");
+		document.getElementById("part2").innerHTML += "<br>" + songStr + "<br><br>";
+		document.getElementById("part3").innerHTML += "<br>" + listSongs(songs);
+	
+	$('select').change(function() {
+		displayGenre($("#genres").val(), songs);
 		
 	});
-	alert("dfd");
+		
+	});
 });
 	
 	function listSongs(songs) {
