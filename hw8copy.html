@@ -19,8 +19,7 @@ $(document).ready (function() {
     	songs.push( "<li id='" + key + "'>" + val + "</li>" );
   		});
 		songStr = JSON.stringify(songs);
-	});
-	
+		
 	document.getElementById("part2").innerHTML += "<br>" + songStr + "<br><br>";
 	document.getElementById("part3").innerHTML += "<br>" + listSongs(songs);
 	
@@ -28,6 +27,8 @@ $(document).ready (function() {
 		displayGenre($("#genres").val(), songs);
 		
 	});
+	});
+	
 });
 	
 	function listSongs(songs) {
