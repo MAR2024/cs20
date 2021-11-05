@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jump</title>
+	<script language = "javascript">
+	
+
+		function jump() {
+			with (document.data) {
+				if (b1.value == "JUMP >") {
+					t2.value = t1.value;
+					t1.value = "";
+					b1.value = "< JUMP";
+				} else {
+					t1.value = t2.value;
+					t2.value = "";
+					b1.value = "JUMP >";
+				}
+			}
+			
+		}
+	</script>
+</head>
+
+<body>
+	<form name = "data">
+		<input type = "text" name = "t1" value = "abc">
+		<input type = "button" name = "b1" value = "JUMP >" onClick = "jump()">
+		<input type = "text" name = "t2" value = "">
+	</form>
+</body>
+</html>

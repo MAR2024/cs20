@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joe's Hotdogs</title>
+<style>
+	body {
+		padding-left: 20px;
+	}
+	
+	h2 {
+		color: #FF0000;
+	}
+	
+	td {
+		padding-right: 60px;
+	}
+	
+	table {
+		border-top-style: solid;
+		border-spacing: 0px 20px;
+	}
+	
+	.receipt {
+		display:none;
+	}
+	
+	ul {
+		list-style-type: none;
+	}
+	
+	
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"> </script>
+<script language = "javascript">				
+	
+	arr = ["select-option", 1,2,3,4,5,10,15,20];
+	var hotdogs, fries, soda = 0;
+	var subtotal, tax, total = 0;
+	
+	function makeSelect(item, price) {
+		s = "";
+		s += "<td><select name = " + item + ">"
+		for (i = 0; i < arr.length; i++) {
+			s += "<option>" + arr[i] + "</option>"
+		}
+		s += "</select></td>"
+		s += "<td>" + item + "</td>" ;
+		s += "<td>"+ "$" + price + "</td>";
+		return s;
+	} 
+	
+	function validate() {
+		if ($('[name = "Hotdogs"]').val() == arr[0]) {
+			hotdogs = 0;
+		} else {
+			hotdogs = $('[name = "Hotdogs"]').val();
+		}
+		if ($('[name = "Fries"]').val() == arr[0]) {
+			fries = 0;
+		} else {
+			fries = $('[name = "Fries"]').val();
+		}
+		if ($('[name = "Sodas"]').val() == arr[0]) {
+			sodas = 0;
+		} else {
+			sodas = $('[name = "Sodas"]').val();
+		}
+		totalQuan = hotdogs + fries + sodas;
+		if (totalQuan == 0){
+			alert("You must order at least 1 item");
+			display("");
+			document.data.Hotdogs.focus();
+			return false;
+		}
+			subtotal =  (parseFloat(hotdogs*3.75) + parseFloat(fries*2.00) +  parseFloat(sodas*1.50)).toFixed(2);
+			receipt = "<h2>Thank You For Ordering!</h2>You ordered...<br><ul>";
+			receipt += "<li>" + hotdogs + "&nbspHotdogs</li>";
+			receipt += "<li>" + fries + "&nbspFries</li>";
+			receipt += "<li>" + sodas + "&nbspSodas</li></ul>";
+			receipt += "Subtotal: $" + parseFloat(subtotal) + "<br>";
+			discount = 0;
+			if (subtotal >= 20) {
+				discount = .10*parseFloat(subtotal);
+				receipt += "Discount: - $" + parseFloat(discount.toFixed(2)) + "<br>";
+			}
+			tax = .0625*(parseFloat(subtotal) - parseFloat(discount));
+			receipt += "Tax: + $" + parseFloat(tax.toFixed(2)) + "<br>";
+			total = parseFloat(subtotal) + tax - discount;
+			receipt += "Total: $" + parseFloat(total.toFixed(2)) + "<br>";
+			display(receipt);
+			return true;
+	}
+	
+	function display(toDisp) {
+		document.getElementById("receipt").innerHTML = toDisp;
+		$("#receipt").css("display","inline-block");
+	}
+	
+</script>
+</head>
+
+<body>
+	<h1>Joe's Hotdog Stand</h1>
+	<form name = "data">
+		<table>
+			<script language = "javascript">
+				s = "<tr><td>Quantity</td><td>Item</td><td>Unit Price</td></tr>";
+				s += "<tr>" + makeSelect("Hotdogs", 3.75) + "</tr>";
+				s += "<tr>" + makeSelect("Fries", 2.00) + "</tr>";
+				s += "<tr>" + makeSelect("Sodas", 1.50) + "</tr>";
+				document.write(s);
+			</script>
+		</table>
+		<input type = "button" value = "Tally Order" id = "tally" onClick = "validate()" />
+	</form>
+	<div class = "receipt" id = "receipt"></div>
+</body>
+</html>

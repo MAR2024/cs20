@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Checks</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script language="javascript">
+		$(document).ready (function() {
+				$('#checkAll').change(function() {
+					if (document.getElementById("checkAllLabel").innerHTML == "Check All") {
+						newValue = "Uncheck All";
+						changeChecks(true);
+						
+					} else {
+						newValue = "Check All";
+						changeChecks(false);
+					}
+					document.getElementById("checkAllLabel").innerHTML = newValue;
+				});
+		});
+	
+	function changeChecks(booleanVal) {
+		$('[name = "first"]').prop('checked', booleanVal);
+		$('[name = "second"]').prop('checked', booleanVal);
+		$('[name = "third"]').prop('checked', booleanVal);
+		$('[name = "fourth"]').prop('checked', booleanVal);
+		
+	}
+	
+	</script>
+</head>
+
+<body>
+	<form>
+		<input type = "checkbox" id = "checkAll" value = "Check All" >
+		<label for = "checkAll" id = "checkAllLabel">Check All</label>
+		<br><br>
+		<input type = "checkbox" name = "first" value = "first">
+		<label for = "first">first</label>
+		<br>
+		<input type = "checkbox" name = "second"  value = "second">
+		<label for = "second">second</label>
+		<br>
+		<input type = "checkbox" name = "third" value = "third">
+		<label for = "third">third</label>
+		<br>
+		<input type = "checkbox" name = "fourth" value = "fourth">
+		<label for = "fourth">fourth</label>
+		
+	
+	</form>
+</body>
+</html>
