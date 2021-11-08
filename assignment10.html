@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script>
+	function loadData() {
+		request = new XMLHttpRequest();
+		request.open("GET", "https://catfact.ninja/breeds?limit=2", true);
+		request.onreadystatechange = function() {
+			catData = request.responseText;
+			jCatData = JSON.parse(catData);
+			toDisplay = "Breed 1: " + jCatData['data'][0]["breed"] + "<br> Country: " + jCatData['data'][0]["country"];
+			toDisplay += "<br> Coat: " + jCatData['data'][0]["coat"] + "<br><br>";
+			toDisplay += "Breed 2: " + jCatData['data'][1]["breed"] + "<br> Country: " + jCatData['data'][0]["country"];
+			toDisplay += "<br> Coat: " + jCatData['data'][1]["coat"];
+			document.getElementById("pulled").innerHTML = toDisplay;
+		}
+		request.send();
+	}
+	
+	
+</script>
+</head>
+
+<body onload = "loadData()" >
+	<h1>Assignment 10</h1>
+	<h2>API Data</h2>
+	<div id = "pulled"></div>
+	<h2>Answers to Questions </h2>
+	<div><ul>
+		<li>I used a free Cat Fact API. It provides users with information about different cat breeds, as well as random cat facts.</li> 
+		<li>I found it on <a href = "https://catfact.ninja/." target = "_blank">https://catfact.ninja/.</a> </li>
+		<li>There were two different pieces of information you could pull from this site, cat breeds and cat facts. I decided to pull cat breeds and found data on the names, countries, and patterns of different breeds. I had to use a limit key which specified how many cat breeds I would like to access.</li>
+		<li>This API could be useful if you own a cat cafe, where people can get coffee and pet cats. You could display random cat facts on your website to entice people to come visit your shop. This API could also be used by a cat adoption agency. The organization could use it to display information about different cat breeds in order to inform adopters about their cat selections.</li>
+		</ul> 
+	</div>
+</body>
+</html>
