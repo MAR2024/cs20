@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GCD Demo</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"> </script>
+<style>
+	.col { 
+		width:150px; 
+		padding-bottom: 20px;
+	}
+	form input{
+		font-size: 18px;
+	}
+	
+	form {
+		margin;
+	}
+	
+	.theGCD {
+		display: none;
+	}
+	body {
+		padding-left: 20px;
+	}
+	
+</style>
+<script language = "javascript">
+	function validate() {
+		number1 = parseInt(document.getElementById("num1").value);
+		number2 = parseInt(document.getElementById("num2").value);
+		document.getElementById("getGCD").innerHTML = "The GCD is: " + (gcd(number1, number2))[0] + "<br>Number of Calls: " + (gcd(number1, number2))[1];
+		$("#getGCD").css("display", "inline-block");
+		return false;
+		
+	}
+	
+	function gcd(a, b) {
+		c = mod(a,b);
+;		if (c == 0) {
+			return [b,1];
+		} else {
+			toReturn = gcd(b,c);
+			toReturn[1]++;
+			return toReturn;
+		}
+	}
+	
+	function mod(a,b){
+		c = a%b;
+		if (c < 0) {
+			return -c;
+		} else {
+			return c;
+		}
+	}
+	
+</script>
+</head>
+
+<body>
+	<form method = "get"> 
+		<h1>GCD Calculator</h1>
+		<div class = "col">Enter Number 1: 
+		<input type = "text" id = "num1"></div>
+		<div class = "col">Enter Number 2:
+		<input type = "text" id = "num2"></div>
+		<div class = "col"><input type = "button" value = "Calculate GCD" onClick = "validate()"></div>
+	</form>
+	<div class = "theGCD" id = "getGCD"></div>
+</body>
+</html>
