@@ -1,10 +1,10 @@
 {
-  "name": "sample",
+  "name": "hello",
   "version": "1.0.0",
   "description": "my sample node app",
-  "main": "sample.js",
+  "main": "hello.js",
   "scripts": {
-  "start": "node sample.js"
+  "start": "node hello.js"
 },
   "repository": {
   "type": "git",
@@ -16,4 +16,4 @@
   "url": ""
 },
   "homepage": ""
-}// JSON Document
+}
