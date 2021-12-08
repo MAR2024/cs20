@@ -1,10 +1,10 @@
 {
-  "name": "hello",
+  "name": "hw14",
   "version": "1.0.0",
-  "description": "my sample node app",
-  "main": "hello.js",
+  "description": "my hw14 node app",
+  "main": "hw14pt2.js",
   "scripts": {
-  "start": "node hello.js"
+  "start": "node hw14pt2.js"
 },
   "repository": {
   "type": "git",
@@ -15,5 +15,5 @@
   "bugs": {
   "url": ""
 },
-  "homepage": ""
+  "homepage": "hw14.html"
 }
