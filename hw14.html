@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<style>
+	body {
+		padding-left: 20px;
+	}
+	.spacer {
+		padding-top: 10px;
+	}
+</style>
+	
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"> </script>
+
+</head>
+
+<body>
+	<script language = "javascript">
+		
+	function show() {
+          if ($('[name = "c_or_t"]').val() == "company") {
+              $('[name = "ctInput"]').val("Ticker");
+			  $('[name = "c_or_t"]').val("ticker");
+          } else { 
+              $('[name = "ctInput"]').val("Company Name");
+			  $('[name = "c_or_t"]').val("company");
+          }
+	}
+</script>
+<h1>Stock Ticker App</h1>
+<form method = post action = "http://localhost:8080"> 
+<div>
+<input type="radio"  name="c_or_t" value = "company" checked="checked" onClick = "show()"/>Company
+<input type="radio"  name="c_or_t" value = "ticker" onClick = "show()"/>Ticker
+</div>
+<div class = "spacer">
+	<input type = "text" name = "ctInput" id = "ctInput" value = "Company Name"/>
+</div>
+<div class = "spacer">
+	<input type = "submit" name = "submit" value = "Find">
+</div>
+</form>
+</body>
+</html>
